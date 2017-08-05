@@ -1,4 +1,5 @@
 # PowerSpray
 
 Powershell script created to test a weak password against all active directory accounts.
-Feel free to modify/uncomment lines to try more than one password using a input text file (careful of lockouts).
+Update powerspray.ps1 with your own domain name and OU structure.
+Add to password.txt to try multiple passwords per user (careful of lockouts).
