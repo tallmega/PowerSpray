@@ -1,9 +1,10 @@
-# First generate users.txt with 'Get-ADUser -SearchBase ìOU=myou,dc=test,dc=localî -Filter 'samaccountname -like "username"' -ResultSetSize 200 | Select distinguishedName | ConvertTo-Csv -NoTypeInformation | select -Skip 1 | Set-Content users.txt'
-# Uncomment below lines (and comment out the 'Summer 2017' line for debugging or to try multiple passwords against each user
+# Update with your own OU, domain and password.
 
+Get-ADUser -SearchBase ‚ÄúOU=myou,dc=test,dc=local‚Äù | Select distinguishedName | ConvertTo-Csv -NoTypeInformation | select -Skip 1 | Set-Content users.txt
+
+# Uncomment below lines (and comment out the 'Summer 2017' line for debugging or to try multiple passwords against each user
 foreach ($FQDN in Get-Content .\users.txt)
 {
-    #Write-Host $FQDN
     $results = dsget user $FQDN -samid
     #Write-Host $results
     $samid = $results[1].replace(" ", "")
